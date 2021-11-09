@@ -1,0 +1,15 @@
+<div class="d-flex flex-column align-items-center mt-5">
+    <mdb-card class="w-50">
+        <mdb-card-img src="../../assets/result-page-card-img.png" alt="Card image cap">
+        </mdb-card-img>
+        <mdb-card-body>
+            <mdb-card-title>
+                <h4>{{title}}</h4>
+            </mdb-card-title>
+            <mdb-card-text>
+                {{ description }}
+            </mdb-card-text>
+            <button type="button" mdbBtn color="primary" mdbWavesEffect (click)="onBack.emit()">Back</button>
+        </mdb-card-body>
+    </mdb-card>
+</div>

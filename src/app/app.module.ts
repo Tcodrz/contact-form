@@ -5,7 +5,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFormModule } from './contact-form/contact-form.module';
-import { ContactFormComponent } from './contact-form/contact-form/contact-form.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { ContactFormComponent } from './contact-form/contact-form/contact-form.c
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    ContactFormModule
+    ContactFormModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

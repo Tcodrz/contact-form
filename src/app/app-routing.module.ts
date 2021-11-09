@@ -4,7 +4,11 @@ import { ContactFormComponent } from './contact-form/contact-form/contact-form.c
 
 const routes: Routes = [
   { path: '', redirectTo: 'contact', pathMatch: 'prefix' },
-  { path: 'contact', component: ContactFormComponent }
+  { path: 'contact', component: ContactFormComponent },
+  {
+    path: 'result/:name',
+    loadChildren: () => import('./result/result.module').then(m => m.ResultModule)
+  }
 ];
 
 @NgModule({
