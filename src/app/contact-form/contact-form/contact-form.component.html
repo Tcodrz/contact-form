@@ -1,44 +1,52 @@
 <div class="d-flex flex-column align-items-center mt-5">
 
-    <form class="text-center border border-light p-4 box-shadow" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-        <p class="h4 mb-4">Contact us</p>
+  <form class="text-center border border-light p-4 box-shadow w-50 background-white" [formGroup]="contactForm"
+    (ngSubmit)="onSubmit()">
 
-        <div class="md-form">
-            <input type="text" formControlName="contactName" id="contactName" mdbInput
-                   class="form-control mb-4" placeholder="Name">
-            <label for="contactName"></label>
-            <ng-template [ngTemplateOutlet]="nameErrorValidation"></ng-template>
-        </div>
+    <img src="../../../assets/contact-form-img-small.jpg" alt="contact-us-img" class="form-img">
 
-        <div class="md-form">
-            <input type="email" formControlName="contactEmail" id="contactEmail" mdbInput
-                   class="form-control mb-4" placeholder="E-mail">
-            <label for="contactEmail"></label>
-            <ng-template [ngTemplateOutlet]="emailErrorValidation"></ng-template>
-        </div>
+    <div class="md-form">
+      <input type="text" formControlName="contactName" id="contactName" mdbInput class="form-control mb-4"
+        placeholder="Name">
+      <label for="contactName"></label>
+      <ng-template [ngTemplateOutlet]="nameErrorValidation"></ng-template>
+    </div>
 
-        <button mdbBtn color="info" [outline]="true" [block]="true" class="z-depth-0 my-4 waves-effect"
-                mdbWavesEffect type="submit" [disabled]="disabledSubmitButton">Send</button>
-    </form>
+    <div class="md-form">
+      <input type="email" formControlName="contactEmail" id="contactEmail" mdbInput class="form-control mb-4"
+        placeholder="E-mail">
+      <label for="contactEmail"></label>
+      <ng-template [ngTemplateOutlet]="emailErrorValidation"></ng-template>
+    </div>
+
+    <button mdbBtn mdbWavesEffect color="info" [outline]="true" [block]="true" class="z-depth-0 my-4 waves-effect"
+      type="submit" [disabled]="disabledSubmitButton">
+      Send
+    </button>
+  </form>
+
+  <app-progress-spinner *ngIf="pending"></app-progress-spinner>
 </div>
 
 
 
 <ng-template #nameErrorValidation>
-    <mdb-error *ngIf="contactName.invalid && (contactName.touched || contactName.dirty)">
-        <span *ngIf="contactName.errors.required">
-            Name is required
-        </span>
-    </mdb-error>
+  <mdb-error *ngIf="contactName.invalid && (contactName.touched || contactName.dirty)">
+    <span *ngIf="contactName.errors.required">
+      Name is required
+    </span>
+  </mdb-error>
 </ng-template>
 
 <ng-template #emailErrorValidation>
-    <mdb-error *ngIf="contactEmail.invalid && (contactEmail.touched || contactEmail.dirty)">
-        <span *ngIf="contactEmail.errors.required">
-            Email is required
-        </span>
-        <span *ngIf="contactEmail.errors.email">
-            Please provide a valid email address
-        </span>
-    </mdb-error>
+  <mdb-error *ngIf="contactEmail.invalid && (contactEmail.touched || contactEmail.dirty)">
+
+    <span *ngIf="contactEmail.errors.required">
+      Email is required
+    </span>
+
+    <span *ngIf="contactEmail.errors['invalidEmail']">
+      Please provide a valid email address
+    </span>
+  </mdb-error>
 </ng-template>

@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactFormComponent } from './contact-form/contact-form.component';
@@ -14,7 +15,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CommonModule,
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ContactFormModule { }

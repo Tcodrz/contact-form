@@ -1,7 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, HostListener } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactForm } from 'src/app/interface/user.interface';
 import { ContactFormService } from 'src/app/services/contact-form.service';
+import { emailValidator } from 'src/app/shared/validators/emailValidator';
 
 @Component({
   selector: 'app-contact-form',
@@ -12,6 +13,7 @@ export class ContactFormComponent {
 
   contactForm: FormGroup;
   disabledSubmitButton: boolean = true;
+  pending: boolean = false;
 
   @HostListener('input') oninput() {
     if (this.contactForm.valid) {
@@ -20,35 +22,28 @@ export class ContactFormComponent {
   }
 
   constructor(
-    private fb: FormBuilder,
     private contactService: ContactFormService
   ) {
-    this.contactForm = this.fb.group({
-      'contactName': ['', Validators.required],
-      'contactEmail': ['', Validators.compose([Validators.required, Validators.email])]
+    this.contactForm = new FormGroup({
+      contactName: new FormControl('', [Validators.required]),
+      contactEmail: new FormControl('', [Validators.required, emailValidator()])
     });
   }
-
 
   get contactName() { return this.contactForm.get('contactName') }
   get contactEmail() { return this.contactForm.get('contactEmail') }
 
   onSubmit() {
+    this.pending = true;
     const contact: ContactForm = {
       name: this.contactName.value,
       email: this.contactEmail.value
     }
-    this.contactService.submitRequest(contact);
-    /*
-    this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
-      alert('Your message has been sent.');
-      this.contactForm.reset();
-      this.disabledSubmitButton = true;
-    }, error => {
-      console.log('Error', error);
-    });
-    */
+    this.contactService.submitRequest(contact)
+      .then(() => this.pending = false)
+      .catch(e => console.error(e));
   }
 
-
 }
+
+

@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http'
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     ContactFormModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
