@@ -30,7 +30,7 @@ export class ResultComponent implements OnInit, OnDestroy {
     this.arSubsciption.unsubscribe();
   }
 
-  backHome() {
+  backHome(): void {
     this.router.navigate(['']);
   }
 

@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContactForm } from '../interface/user.interface';
+import { ContactForm } from '../interface/contact-form.interface';
 import { ApiService } from './api.service';
 import { CacheService } from './cache.service';
 
@@ -17,13 +17,17 @@ export class ContactFormService {
   ) { }
 
 
+  /**
+   * Submit a 'contact-us' request to the server
+   * @param contact contact details to send to the server
+   * @returns void promise
+   */
   submitRequest(contact: ContactForm): Promise<void> {
     return new Promise(resolve => {
-
-      if (this.cacheService.isItemInCache(contact.name)) {
+      if (this.cacheService.isItemInCache(contact.email)) {
         this.router.navigate([`result/${contact.name}`]);
       } else {
-        this.cacheService.setItemInCache<ContactForm>(contact.name, contact);
+        this.cacheService.setItemInCache<ContactForm>(contact.email, contact);
         this.api.sendContactForm(contact)
           .subscribe(
             (res) => {

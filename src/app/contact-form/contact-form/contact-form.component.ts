@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ContactForm } from 'src/app/interface/user.interface';
+import { ContactForm } from 'src/app/interface/contact-form.interface';
 import { ContactFormService } from 'src/app/services/contact-form.service';
 import { emailValidator } from 'src/app/shared/validators/emailValidator';
 
@@ -21,9 +21,7 @@ export class ContactFormComponent {
     }
   }
 
-  constructor(
-    private contactService: ContactFormService
-  ) {
+  constructor(private contactService: ContactFormService) {
     this.contactForm = new FormGroup({
       contactName: new FormControl('', [Validators.required]),
       contactEmail: new FormControl('', [Validators.required, emailValidator()])
@@ -33,12 +31,14 @@ export class ContactFormComponent {
   get contactName() { return this.contactForm.get('contactName') }
   get contactEmail() { return this.contactForm.get('contactEmail') }
 
-  onSubmit() {
+  onSubmit(): void {
     this.pending = true;
+
     const contact: ContactForm = {
       name: this.contactName.value,
       email: this.contactEmail.value
     }
+
     this.contactService.submitRequest(contact)
       .then(() => this.pending = false)
       .catch(e => console.error(e));

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ContactForm } from '../interface/user.interface';
+import { ContactForm } from '../interface/contact-form.interface';
 
 @Injectable({
   providedIn: 'root'
