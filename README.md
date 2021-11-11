@@ -1,11 +1,11 @@
 # ContactPage
 
-## first run 'npm install'
+first run 'npm install'
 
-## then run 'npm run serve:all'
+then run 'npm run serve:all'
 
-    this will start a mock server using json-server at 'http://localhost:3000'
-    this will also start an Angular development sever at 'http://localhost:4200'
+this will start a mock server using json-server at 'http://localhost:3000'
+this will also start an Angular development sever at 'http://localhost:4200'
 
 ## Working Demo
 
