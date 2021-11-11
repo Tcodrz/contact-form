@@ -8,11 +8,12 @@ import { ContactForm } from '../interface/contact-form.interface';
 })
 export class ApiService {
 
-  private readonly apiAddress = 'https://httpbin.org/post';
+  private readonly API_ENDPOINT = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   sendContactForm(contact: ContactForm): Observable<any> {
-    return this.http.post(this.apiAddress, contact);
+    return this.http.post(`${this.API_ENDPOINT}/contacts`, contact);
   }
+
 }

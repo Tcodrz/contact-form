@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Tom Zohar",
+      "email": "ttomz@gmail.com"
+    },
+    {
+      "name": "shay tuchman",
+      "email": "shay@gmail.com",
+      "id": 2
+    },
+    {
+      "name": "tom zohar",
+      "email": "ttomz@gmail.com",
+      "id": 3
+    },
+    {
+      "name": "someone else",
+      "email": "someone_else@email.co.il",
+      "id": 4
+    },
+    {
+      "name": "tom zohar",
+      "email": "ttomz@gmail.com",
+      "id": 5
+    },
+    {
+      "name": "another name",
+      "email": "another_name@gmial.com",
+      "id": 6
+    }
+  ]
+}

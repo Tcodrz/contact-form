@@ -2,7 +2,7 @@ import { ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 
 /**
  * Custom Validator to verify email address
- * @returns null if control is valid or Error if invalid
+ * @returns a validator function that returns null if control is valid or Error if invalid
  */
 export function emailValidator(): ValidatorFn {
 
