@@ -4,7 +4,7 @@ first run 'npm install'
 
 then run 'npm run serve:all'
 
-this will start a mock server using json-server at 'http://localhost:3000'
+this will start a mock server using json-server at 'http://localhost:3000' \n
 this will also start an Angular development sever at 'http://localhost:4200'
 
 ## Working Demo
